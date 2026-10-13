@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timeless Jewels — Gold-Tone Jewelry That Never Tarnishes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-deep:#0F332F;
+    --teal:#164A43;
+    --teal-soft:#1F5F56;
+    --cream:#FBF6EC;
+    --cream-dim:#F1E7D2;
+    --gold:#C9A667;
+    --gold-light:#E8D2A0;
+    --gold-deep:#8A6B37;
+    --ink:#16201D;
+    --ink-soft:#4B5651;
+    --line-on-dark:rgba(232,210,160,0.25);
+    --line-on-light:rgba(138,107,55,0.2);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Jost',sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+    font-weight:400;
+  }
+  h1,h2,h3,.display{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-0.01em;}
+  .italic{font-style:italic;font-weight:400;}
+  .eyebrow{
+    font-size:0.72rem;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 34px;
+    font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;
+    border-radius:2px;
+    transition:all .3s ease;
+    white-space:nowrap;
+  }
+  .btn-gold{background:var(--gold);color:var(--teal-deep);}
+  .btn-gold:hover{background:var(--gold-light);}
+  .btn-ghost-dark{border:1px solid var(--line-on-dark);color:var(--cream);}
+  .btn-ghost-dark:hover{border-color:var(--gold);color:var(--gold-light);}
+  .btn-ghost-light{border:1px solid var(--line-on-light);color:var(--ink);}
+  .btn-ghost-light:hover{border-color:var(--gold-deep);color:var(--gold-deep);}
+
+  /* ---------- Nav ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:22px 0;
+    transition:background .35s ease, padding .35s ease, box-shadow .35s ease;
+  }
+  header.scrolled{background:var(--cream);padding:14px 0;box-shadow:0 1px 0 var(--line-on-light);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand svg{width:34px;height:34px;color:var(--gold);}
+  .brand-text .name{font-family:'Fraunces',serif;font-size:1.05rem;letter-spacing:0.14em;color:var(--cream);}
+  .brand-text .sub{font-size:0.55rem;letter-spacing:0.3em;color:var(--gold-light);opacity:0.8;}
+  header.scrolled .brand-text .name{color:var(--ink);}
+  header.scrolled .brand-text .sub{color:var(--gold-deep);opacity:1;}
+  nav ul{display:flex;gap:38px;list-style:none;}
+  nav a{font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--cream);opacity:0.85;transition:opacity .25s, color .25s;}
+  nav a:hover{opacity:1;color:var(--gold-light);}
+  header.scrolled nav a{color:var(--ink);opacity:0.75;}
+  header.scrolled nav a:hover{color:var(--gold-deep);opacity:1;}
+  .nav-cta{display:flex;align-items:center;gap:22px;}
+  .icon-btn{color:var(--cream);}
+  header.scrolled .icon-btn{color:var(--ink);}
+  .menu-toggle{display:none;color:var(--cream);font-size:1.5rem;}
+  header.scrolled .menu-toggle{color:var(--ink);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:100vh;
+    background:var(--teal-deep);
+    color:var(--cream);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;
+    position:relative;
+    padding:140px 24px 80px;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 50% 30%, rgba(201,166,103,0.14), transparent 60%);
+    pointer-events:none;
+  }
+  .hourglass-mark{width:74px;height:110px;margin:0 auto 34px;color:var(--gold);position:relative;z-index:1;}
+  .hero h1{font-size:clamp(2.5rem,6vw,4.6rem);line-height:1.08;max-width:820px;position:relative;z-index:1;}
+  .hero p.lede{
+    margin-top:26px;max-width:520px;font-size:1.05rem;line-height:1.7;color:var(--gold-light);
+    position:relative;z-index:1;opacity:0.92;
+  }
+  .hero .actions{margin-top:44px;display:flex;gap:18px;flex-wrap:wrap;justify-content:center;position:relative;z-index:1;}
+
+  /* sand drip animation inside hourglass mark */
+  .grain{animation:drip 1.8s linear infinite;}
+  @keyframes drip{
+    0%{transform:translateY(0);opacity:1;}
+    80%{transform:translateY(46px);opacity:1;}
+    100%{transform:translateY(50px);opacity:0;}
+  }
+
+  /* ---------- Ticker ---------- */
+  .ticker{
+    background:var(--gold);
+    color:var(--teal-deep);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:13px 0;
+  }
+  .ticker-track{display:inline-flex;animation:scroll-left 26s linear infinite;}
+  .ticker-track span{
+    font-size:0.75rem;letter-spacing:0.2em;font-weight:500;
+    padding:0 26px;text-transform:uppercase;
+    border-right:1px solid rgba(15,51,47,0.3);
+  }
+  @keyframes scroll-left{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+  /* ---------- Section basics ---------- */
+  section{padding:120px 0;}
+  .section-head{max-width:640px;margin-bottom:64px;}
+  .section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+  .section-head .eyebrow{color:var(--gold-deep);margin-bottom:16px;display:block;}
+  .section-head h2{font-size:clamp(1.9rem,3.6vw,2.9rem);line-height:1.15;}
+  section.dark{background:var(--teal-deep);color:var(--cream);}
+  section.dark .section-head .eyebrow{color:var(--gold-light);}
+  .fade-up{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease;}
+  .fade-up.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- Comparison cards ---------- */
+  .compare-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .compare-card{
+    background:var(--cream-dim);
+    border:1px solid var(--line-on-light);
+    padding:38px 30px;
+    border-radius:4px;
+  }
+  .compare-card.featured{background:var(--teal-deep);color:var(--cream);border-color:var(--teal-deep);}
+  .compare-card .tag{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-deep);}
+  .compare-card.featured .tag{color:var(--gold-light);}
+  .compare-card h3{font-size:1.4rem;margin:12px 0 16px;}
+  .compare-card p{font-size:0.93rem;line-height:1.65;color:var(--ink-soft);}
+  .compare-card.featured p{color:var(--gold-light);opacity:0.95;}
+  .fine-print{margin-top:34px;font-size:0.78rem;color:var(--ink-soft);line-height:1.7;max-width:760px;}
+
+  /* ---------- Collections ---------- */
+  .collections-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line-on-light);border:1px solid var(--line-on-light);}
+  .collection-card{
+    background:var(--cream);
+    padding:52px 28px;
+    display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px;
+    transition:background .3s ease;
+  }
+  .collection-card:hover{background:var(--cream-dim);}
+  .collection-card svg{width:52px;height:52px;color:var(--gold-deep);}
+  .collection-card h3{font-size:1.15rem;}
+  .collection-card .shop-link{font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-deep);border-bottom:1px solid var(--gold-deep);padding-bottom:2px;}
+
+  /* ---------- Products ---------- */
+  .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;}
+  .product-card{background:var(--cream);}
+  .product-thumb{
+    background:var(--cream-dim);
+    aspect-ratio:1/1;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line-on-light);
+    margin-bottom:18px;
+    position:relative;
+    overflow:hidden;
+  }
+  .product-thumb svg{width:58%;height:58%;color:var(--gold-deep);transition:transform .4s ease;}
+  .product-card:hover .product-thumb svg{transform:scale(1.06);}
+  .product-name{font-family:'Fraunces',serif;font-size:1.08rem;margin-bottom:4px;}
+  .product-meta{display:flex;justify-content:space-between;align-items:center;}
+  .product-price{font-size:0.92rem;color:var(--ink-soft);}
+  .add-bag{font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-deep);}
+
+  /* ---------- Promise pillars ---------- */
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:50px;}
+  .pillar{text-align:center;}
+  .pillar svg{width:46px;height:46px;color:var(--gold);margin:0 auto 24px;}
+  .pillar h3{font-size:1.25rem;margin-bottom:12px;}
+  .pillar p{font-size:0.92rem;line-height:1.7;color:var(--gold-light);opacity:0.9;}
+
+  /* ---------- Testimonials ---------- */
+  .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+  .testi-card{padding:32px 0 0;border-top:1px solid var(--line-on-light);}
+  .stars{color:var(--gold-deep);font-size:0.85rem;letter-spacing:2px;margin-bottom:16px;}
+  .testi-card p{font-size:0.98rem;line-height:1.75;font-family:'Fraunces',serif;font-style:italic;color:var(--ink);margin-bottom:20px;}
+  .testi-who{display:flex;align-items:center;gap:12px;}
+  .testi-avatar{width:38px;height:38px;border-radius:50%;background:var(--teal-deep);color:var(--gold-light);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:500;}
+  .testi-name{font-size:0.85rem;color:var(--ink-soft);}
+
+  /* ---------- Newsletter ---------- */
+  .newsletter{background:var(--teal-soft);color:var(--cream);text-align:center;padding:100px 24px;}
+  .newsletter h2{font-size:clamp(1.8rem,3.4vw,2.6rem);margin-bottom:16px;}
+  .newsletter p{color:var(--gold-light);opacity:0.9;margin-bottom:36px;}
+  .news-form{display:flex;justify-content:center;gap:0;max-width:460px;margin:0 auto;}
+  .news-form input{
+    flex:1;padding:16px 20px;background:transparent;border:1px solid var(--line-on-dark);border-right:none;
+    color:var(--cream);font-family:inherit;font-size:0.9rem;
+  }
+  .news-form input::placeholder{color:rgba(251,246,236,0.5);}
+  .news-form input:focus{outline:none;border-color:var(--gold);}
+  .news-form button{background:var(--gold);color:var(--teal-deep);padding:0 30px;font-size:0.75rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:500;}
+  .news-form button:hover{background:var(--gold-light);}
+  .news-note{margin-top:16px;font-size:0.72rem;letter-spacing:0.08em;opacity:0.7;}
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--teal-deep);color:var(--cream);padding:80px 0 30px;}
+  .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:60px;border-bottom:1px solid var(--line-on-dark);}
+  .footer-brand svg{width:40px;height:40px;color:var(--gold);margin-bottom:18px;}
+  .footer-brand p{font-size:0.88rem;color:var(--gold-light);opacity:0.8;line-height:1.7;max-width:280px;}
+  .footer-col h4{font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold-light);margin-bottom:20px;}
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px;}
+  .footer-col a{font-size:0.87rem;color:var(--cream);opacity:0.75;transition:opacity .25s;}
+  .footer-col a:hover{opacity:1;color:var(--gold-light);}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:26px;flex-wrap:wrap;gap:14px;}
+  .footer-bottom p{font-size:0.75rem;color:var(--gold-light);opacity:0.6;}
+  .socials{display:flex;gap:16px;}
+  .socials a{width:34px;height:34px;border:1px solid var(--line-on-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+  .socials svg{width:15px;height:15px;color:var(--gold-light);}
+  .socials a:hover{border-color:var(--gold);}
+
+  /* ---------- Scroll hourglass indicator ---------- */
+  .scroll-glass{
+    position:fixed;bottom:26px;right:26px;z-index:90;
+    width:40px;height:58px;
+    opacity:0.9;
+  }
+
+  /* ---------- Cart ---------- */
+  .bag-btn{position:relative;color:var(--cream);display:inline-flex;align-items:center;}
+  header.scrolled .bag-btn{color:var(--ink);}
+  .bag-btn svg{width:22px;height:22px;transition:color .25s;}
+  .bag-btn:hover{color:var(--gold-light);}
+  header.scrolled .bag-btn:hover{color:var(--gold-deep);}
+  .bag-count{
+    position:absolute;top:-8px;right:-10px;
+    min-width:18px;height:18px;padding:0 5px;
+    background:var(--gold);color:var(--teal-deep);
+    border-radius:9px;font-size:0.62rem;font-weight:600;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Jost',sans-serif;letter-spacing:0;
+    transform:scale(0);transition:transform .25s ease;
+  }
+  .bag-count.show{transform:scale(1);}
+
+  .cart-overlay{
+    position:fixed;inset:0;z-index:200;
+    background:rgba(15,51,47,0.45);
+    opacity:0;visibility:hidden;transition:opacity .35s ease,visibility .35s ease;
+  }
+  .cart-overlay.open{opacity:1;visibility:visible;}
+
+  .cart-drawer{
+    position:fixed;top:0;right:0;bottom:0;z-index:210;
+    width:min(420px,100%);
+    background:var(--cream);
+    display:flex;flex-direction:column;
+    transform:translateX(100%);
+    transition:transform .4s cubic-bezier(.4,0,.2,1);
+    box-shadow:-8px 0 40px rgba(0,0,0,0.18);
+  }
+  .cart-drawer.open{transform:translateX(0);}
+  .cart-header{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:26px 28px;border-bottom:1px solid var(--line-on-light);
+  }
+  .cart-header h3{font-size:1.25rem;display:inline;}
+  .cart-header .count-label{font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold-deep);margin-left:10px;}
+  .cart-close{color:var(--ink);width:26px;height:26px;display:flex;align-items:center;justify-content:center;}
+  .cart-close svg{width:20px;height:20px;}
+  .cart-close:hover{color:var(--gold-deep);}
+
+  .cart-items{flex:1;overflow-y:auto;padding:0 28px;}
+  .cart-empty{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;height:100%;gap:18px;color:var(--ink-soft);padding:40px 20px;
+  }
+  .cart-empty svg{width:54px;height:54px;color:var(--gold-deep);opacity:0.55;}
+  .cart-empty p{font-size:0.95rem;line-height:1.6;}
+
+  .cart-item{display:flex;gap:16px;padding:22px 0;border-bottom:1px solid var(--line-on-light);}
+  .cart-item-thumb{
+    width:72px;height:72px;flex-shrink:0;
+    background:var(--cream-dim);border:1px solid var(--line-on-light);border-radius:3px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .cart-item-thumb svg{width:56%;height:56%;color:var(--gold-deep);}
+  .cart-item-info{flex:1;display:flex;flex-direction:column;min-width:0;}
+  .cart-item-name{font-family:'Fraunces',serif;font-size:1rem;margin-bottom:4px;}
+  .cart-item-price{font-size:0.85rem;color:var(--ink-soft);margin-bottom:auto;}
+  .cart-item-controls{display:flex;align-items:center;justify-content:space-between;margin-top:12px;}
+  .qty{display:flex;align-items:center;border:1px solid var(--line-on-light);border-radius:2px;}
+  .qty button{width:28px;height:28px;font-size:1rem;color:var(--ink);display:flex;align-items:center;justify-content:center;}
+  .qty button:hover{color:var(--gold-deep);}
+  .qty span{min-width:30px;text-align:center;font-size:0.85rem;}
+  .cart-item-remove{font-size:0.66rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-soft);border-bottom:1px solid transparent;}
+  .cart-item-remove:hover{color:var(--gold-deep);border-bottom-color:var(--gold-deep);}
+
+  .cart-footer{padding:24px 28px 28px;border-top:1px solid var(--line-on-light);}
+  .cart-footer[hidden]{display:none;}
+  .cart-subtotal{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;}
+  .cart-subtotal .label{font-size:0.8rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-soft);}
+  .cart-subtotal .amount{font-family:'Fraunces',serif;font-size:1.5rem;}
+  .cart-ship-note{font-size:0.74rem;color:var(--ink-soft);margin-bottom:20px;}
+  .cart-checkout{width:100%;justify-content:center;}
+
+  /* ---------- Mobile ---------- */
+  @media(max-width:900px){
+    nav ul{display:none;}
+    .menu-toggle{display:block;}
+    .compare-grid,.collections-grid,.product-grid,.pillars,.testi-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:repeat(2,1fr);row-gap:40px;}
+  }
+  @media(max-width:600px){
+    .wrap{padding:0 20px;}
+    section{padding:80px 0;}
+    .compare-grid,.collections-grid,.product-grid,.pillars,.testi-grid,.footer-grid{grid-template-columns:1fr;}
+    .news-form{flex-direction:column;}
+    .news-form input{border-right:1px solid var(--line-on-dark);}
+    .scroll-glass{display:none;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .grain,.ticker-track{animation:none !important;}
+    .fade-up{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ SVG SYMBOL LIBRARY ============ -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="hourglass" viewBox="0 0 100 150">
+      <line x1="30" y1="8" x2="70" y2="8" stroke="currentColor" stroke-width="2.5"/>
+      <line x1="30" y1="142" x2="70" y2="142" stroke="currentColor" stroke-width="2.5"/>
+      <line x1="22" y1="0" x2="22" y2="150" stroke="none"/>
+      <path d="M32 8 L68 8 L68 20 L54 68 Q50 74 46 68 L32 20 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M32 142 L68 142 L68 130 L54 82 Q50 76 46 82 L32 130 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+      <line x1="18" y1="4" x2="18" y2="146" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="82" y1="4" x2="82" y2="146" stroke="currentColor" stroke-width="1.4"/>
+      <line x1="50" y1="16" x2="50" y2="2" stroke="currentColor" stroke-width="1.6"/>
+      <line x1="38" y1="12" x2="35" y2="1" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="62" y1="12" x2="65" y2="1" stroke="currentColor" stroke-width="1.2"/>
+    </symbol>
+    <symbol id="ic-ring" viewBox="0 0 64 64">
+      <circle cx="32" cy="40" r="18" fill="none" stroke="currentColor" stroke-width="2.4"/>
+      <path d="M23 22 L32 8 L41 22 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+      <circle cx="32" cy="16" r="3.2" fill="currentColor"/>
+    </symbol>
+    <symbol id="ic-necklace" viewBox="0 0 64 64">
+      <path d="M10 14 Q32 46 54 14" fill="none" stroke="currentColor" stroke-width="2.4"/>
+      <path d="M26 34 L32 50 L38 34 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ic-bracelet" viewBox="0 0 64 64">
+      <ellipse cx="32" cy="32" rx="24" ry="14" fill="none" stroke="currentColor" stroke-width="2.4"/>
+      <circle cx="8" cy="32" r="2.6" fill="currentColor"/>
+      <circle cx="56" cy="32" r="2.6" fill="currentColor"/>
+    </symbol>
+    <symbol id="ic-earring" viewBox="0 0 64 64">
+      <path d="M32 10 A6 6 0 1 1 31.9 10" fill="none" stroke="currentColor" stroke-width="2.4"/>
+      <line x1="32" y1="18" x2="32" y2="30" stroke="currentColor" stroke-width="2.2"/>
+      <path d="M22 30 Q32 56 42 30 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ic-shield" viewBox="0 0 64 64">
+      <path d="M32 8 L52 16 V32 Q52 48 32 56 Q12 48 12 32 V16 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+      <path d="M23 31 L29 38 L42 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="ic-wave" viewBox="0 0 64 64">
+      <path d="M8 26 Q16 18 24 26 Q32 34 40 26 Q48 18 56 26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M8 40 Q16 32 24 40 Q32 48 40 40 Q48 32 56 40" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ic-leaf" viewBox="0 0 64 64">
+      <path d="M16 48 Q16 16 48 12 Q46 44 16 48 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+      <path d="M18 46 Q34 34 46 14" fill="none" stroke="currentColor" stroke-width="1.8"/>
+    </symbol>
+    <symbol id="ic-mail" viewBox="0 0 24 24">
+      <rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M4 6 L12 13 L20 6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="ic-circle-dot" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="12" cy="12" r="2.4" fill="currentColor"/>
+    </symbol>
+    <symbol id="ic-pin" viewBox="0 0 24 24">
+      <path d="M12 3 C7 3 4 6.4 4 10.5 C4 15.5 12 21 12 21 C12 21 20 15.5 20 10.5 C20 6.4 17 3 12 3 Z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="12" cy="10.2" r="2.4" fill="currentColor"/>
+    </symbol>
+    <symbol id="ic-bag" viewBox="0 0 24 24">
+      <path d="M6 8 H18 L17 21 H7 Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M9 9 V7 A3 3 0 0 1 15 7 V9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="ic-close" viewBox="0 0 24 24">
+      <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ============ SCROLL HOURGLASS INDICATOR ============ -->
+<svg class="scroll-glass" viewBox="0 0 100 150" aria-hidden="true">
+  <path d="M32 8 L68 8 L68 20 L54 68 Q50 74 46 68 L32 20 Z" fill="none" stroke="var(--gold-deep)" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M32 142 L68 142 L68 130 L54 82 Q50 76 46 82 L32 130 Z" fill="none" stroke="var(--gold-deep)" stroke-width="3" stroke-linejoin="round"/>
+  <clipPath id="clip-top"><path d="M32 8 L68 8 L68 20 L54 68 Q50 74 46 68 L32 20 Z"/></clipPath>
+  <clipPath id="clip-bottom"><path d="M32 142 L68 142 L68 130 L54 82 Q50 76 46 82 L32 130 Z"/></clipPath>
+  <rect id="sand-top" x="30" y="8" width="40" height="0" fill="var(--gold)" clip-path="url(#clip-top)"/>
+  <rect id="sand-bottom" x="30" y="150" width="40" height="0" fill="var(--gold)" clip-path="url(#clip-bottom)"/>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header id="site-header">
+  <div class="wrap nav-inner">
+    <div class="brand">
+      <svg><use href="#hourglass"/></svg>
+      <div class="brand-text">
+        <div class="name">TIMELESS</div>
+        <div class="sub">JEWELS</div>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#difference">Our Promise</a></li>
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#bestsellers">Bestsellers</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+      </ul>
+    </nav>
+    <div class="nav-cta">
+      <a href="#" class="icon-btn" aria-label="Search"><i>&#9906;</i></a>
+      <button class="bag-btn" id="bag-btn" aria-label="Open bag">
+        <svg><use href="#ic-bag"/></svg>
+        <span class="bag-count" id="bag-count">0</span>
+      </button>
+      <a href="#bestsellers" class="btn btn-ghost-dark" style="padding:10px 22px;">Shop Now</a>
+      <button class="menu-toggle" aria-label="Menu">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <svg class="hourglass-mark" viewBox="0 0 100 150" aria-hidden="true">
+    <line x1="30" y1="8" x2="70" y2="8" stroke="currentColor" stroke-width="2.5"/>
+    <line x1="30" y1="142" x2="70" y2="142" stroke="currentColor" stroke-width="2.5"/>
+    <path d="M32 8 L68 8 L68 20 L54 68 Q50 74 46 68 L32 20 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M32 142 L68 142 L68 130 L54 82 Q50 76 46 82 L32 130 Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+    <line x1="18" y1="4" x2="18" y2="146" stroke="currentColor" stroke-width="1.4"/>
+    <line x1="82" y1="4" x2="82" y2="146" stroke="currentColor" stroke-width="1.4"/>
+    <circle class="grain" cx="50" cy="66" r="1.8" fill="currentColor"/>
+    <circle class="grain" cx="50" cy="66" r="1.8" fill="currentColor" style="animation-delay:0.6s"/>
+    <circle class="grain" cx="50" cy="66" r="1.8" fill="currentColor" style="animation-delay:1.2s"/>
+  </svg>
+  <h1>Some things<br><span class="italic">aren't meant to fade.</span></h1>
+  <p class="lede">Gold-tone jewelry engineered to resist tarnish, water, and time itself — without real gold's price tag or plating's short shelf life.</p>
+  <div class="actions">
+    <a href="#bestsellers" class="btn btn-gold">Shop New Arrivals</a>
+    <a href="#difference" class="btn btn-ghost-dark">See Our Promise</a>
+  </div>
+</section>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Tarnish-Free</span><span>Waterproof</span><span>Hypoallergenic</span><span>Never Fades</span><span>Not Gold-Plated</span>
+    <span>Tarnish-Free</span><span>Waterproof</span><span>Hypoallergenic</span><span>Never Fades</span><span>Not Gold-Plated</span>
+  </div>
+</div>
+
+<!-- ============ THE DIFFERENCE ============ -->
+<section id="difference">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <span class="eyebrow">The Difference</span>
+      <h2>Same gold glow. None of the upkeep.</h2>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-card fade-up">
+        <span class="tag">Real Gold</span>
+        <h3>Beautiful, but breakable</h3>
+        <p>Gorgeous in theory — soft to the touch, easy to scratch, and priced well beyond everyday wear.</p>
+      </div>
+      <div class="compare-card fade-up">
+        <span class="tag">Gold-Plated</span>
+        <h3>A finish that fades fast</h3>
+        <p>A thin layer sits on top of base metal and wears through in months, leaving a dull grey underneath.</p>
+      </div>
+      <div class="compare-card featured fade-up">
+        <span class="tag">Timeless Gold-Tone</span>
+        <h3>Built for the long run</h3>
+        <p>A rich, durable gold-tone finish designed to resist tarnish, water, and daily wear — season after season.</p>
+      </div>
+    </div>
+    <p class="fine-print fade-up">*Timeless jewelry is not made of real gold and is not gold-plated. Each piece is finished in a durable gold-tone coating designed for everyday wear — the look you want, without the cost or fragility of the real thing.</p>
+  </div>
+</section>
+
+<!-- ============ COLLECTIONS ============ -->
+<section id="collections" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head center fade-up">
+      <span class="eyebrow">Shop By Category</span>
+      <h2>Find your everyday staple.</h2>
+    </div>
+  </div>
+  <div class="wrap" style="padding:0;">
+    <div class="collections-grid fade-up">
+      <a href="#" class="collection-card">
+        <svg><use href="#ic-ring"/></svg>
+        <h3>Rings</h3>
+        <span class="shop-link">Shop Rings</span>
+      </a>
+      <a href="#" class="collection-card">
+        <svg><use href="#ic-necklace"/></svg>
+        <h3>Necklaces</h3>
+        <span class="shop-link">Shop Necklaces</span>
+      </a>
+      <a href="#" class="collection-card">
+        <svg><use href="#ic-bracelet"/></svg>
+        <h3>Bracelets</h3>
+        <span class="shop-link">Shop Bracelets</span>
+      </a>
+      <a href="#" class="collection-card">
+        <svg><use href="#ic-earring"/></svg>
+        <h3>Earrings</h3>
+        <span class="shop-link">Shop Earrings</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BESTSELLERS ============ -->
+<section id="bestsellers">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Bestsellers</span>
+      <h2>The pieces people reach for daily.</h2>
+    </div>
+    <div class="product-grid">
+      <div class="product-card fade-up">
+        <div class="product-thumb"><svg><use href="#ic-earring"/></svg></div>
+        <div class="product-name">The Aria Hoops</div>
+        <div class="product-meta"><span class="product-price">$38</span><a href="#" class="add-bag">Add to Bag</a></div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-thumb"><svg><use href="#ic-bracelet"/></svg></div>
+        <div class="product-name">Solstice Bangle</div>
+        <div class="product-meta"><span class="product-price">$44</span><a href="#" class="add-bag">Add to Bag</a></div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-thumb"><svg><use href="#ic-necklace"/></svg></div>
+        <div class="product-name">Nova Pendant</div>
+        <div class="product-meta"><span class="product-price">$52</span><a href="#" class="add-bag">Add to Bag</a></div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-thumb"><svg><use href="#ic-ring"/></svg></div>
+        <div class="product-name">Wren Signet Ring</div>
+        <div class="product-meta"><span class="product-price">$34</span><a href="#" class="add-bag">Add to Bag</a></div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-thumb"><svg><use href="#ic-bracelet"/></svg></div>
+        <div class="product-name">Ember Chain Bracelet</div>
+        <div class="product-meta"><span class="product-price">$40</span><a href="#" class="add-bag">Add to Bag</a></div>
+      </div>
+      <div class="product-card fade-up">
+        <div class="product-thumb"><svg><use href="#ic-earring"/></svg></div>
+        <div class="product-name">Halo Studs</div>
+        <div class="product-meta"><span class="product-price">$28</span><a href="#" class="add-bag">Add to Bag</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROMISE ============ -->
+<section class="dark">
+  <div class="wrap">
+    <div class="section-head center fade-up">
+      <span class="eyebrow">Our Promise</span>
+      <h2>Made for real life, not display cases.</h2>
+    </div>
+    <div class="pillars">
+      <div class="pillar fade-up">
+        <svg><use href="#ic-shield"/></svg>
+        <h3>Tarnish-Free</h3>
+        <p>Resists dulling, discoloration, and flaking through years of daily wear.</p>
+      </div>
+      <div class="pillar fade-up">
+        <svg><use href="#ic-wave"/></svg>
+        <h3>Waterproof</h3>
+        <p>Shower in it, swim in it, sweat in it — the finish holds up.</p>
+      </div>
+      <div class="pillar fade-up">
+        <svg><use href="#ic-leaf"/></svg>
+        <h3>Hypoallergenic</h3>
+        <p>Nickel-free and gentle on sensitive skin, all day, every day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section id="reviews">
+  <div class="wrap">
+    <div class="section-head fade-up">
+      <span class="eyebrow">Reviews</span>
+      <h2>Worn daily, still shining.</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <p>"I wore my ring in the shower for a month straight by accident. Still looks brand new."</p>
+        <div class="testi-who"><div class="testi-avatar">JM</div><div class="testi-name">Jess M.</div></div>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <p>"Finally, gold jewelry that doesn't turn my fingers green. This is my everyday stack now."</p>
+        <div class="testi-who"><div class="testi-avatar">RL</div><div class="testi-name">Renee L.</div></div>
+      </div>
+      <div class="testi-card fade-up">
+        <div class="stars">★★★★★</div>
+        <p>"Bought this over real gold and haven't looked back. Nobody can tell the difference."</p>
+        <div class="testi-who"><div class="testi-avatar">SK</div><div class="testi-name">Sam K.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEWSLETTER ============ -->
+<div class="newsletter">
+  <div class="wrap" style="padding:0;">
+    <h2>Join the Timeless list.</h2>
+    <p>Get 10% off your first order, plus early access to new drops.</p>
+    <form class="news-form" onsubmit="return false;">
+      <input type="email" placeholder="name@email.com" required>
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="news-note">No spam. Unsubscribe anytime.</p>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <svg><use href="#hourglass"/></svg>
+        <p>Tarnish-free, gold-tone jewelry made to be worn every day, for years to come.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#">Rings</a></li>
+          <li><a href="#">Necklaces</a></li>
+          <li><a href="#">Bracelets</a></li>
+          <li><a href="#">Earrings</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Care Guide</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#difference">Our Promise</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Reviews</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Timeless Jewels. All rights reserved.</p>
+      <div class="socials">
+        <a href="#" aria-label="Instagram"><svg><use href="#ic-circle-dot"/></svg></a>
+        <a href="#" aria-label="Pinterest"><svg><use href="#ic-pin"/></svg></a>
+        <a href="#" aria-label="Email"><svg><use href="#ic-mail"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ CART DRAWER ============ -->
+<div class="cart-overlay" id="cart-overlay"></div>
+<aside class="cart-drawer" id="cart-drawer" aria-hidden="true" aria-label="Shopping bag">
+  <div class="cart-header">
+    <div><h3>Your Bag</h3><span class="count-label" id="cart-count-label"></span></div>
+    <button class="cart-close" id="cart-close" aria-label="Close bag"><svg><use href="#ic-close"/></svg></button>
+  </div>
+  <div class="cart-items" id="cart-items"></div>
+  <div class="cart-footer" id="cart-footer" hidden>
+    <div class="cart-subtotal">
+      <span class="label">Subtotal</span>
+      <span class="amount" id="cart-subtotal">$0</span>
+    </div>
+    <p class="cart-ship-note">Shipping &amp; taxes calculated at checkout.</p>
+    <button class="btn btn-gold cart-checkout" id="cart-checkout">Checkout</button>
+  </div>
+</aside>
+
+<script>
+  // header background on scroll
+  const header = document.getElementById('site-header');
+  const sandTop = document.getElementById('sand-top');
+  const sandBottom = document.getElementById('sand-bottom');
+  function onScroll(){
+    const y = window.scrollY;
+    header.classList.toggle('scrolled', y > 40);
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = max > 0 ? Math.min(1, y / max) : 0;
+    const topH = 60 * (1 - progress);
+    const botH = 60 * progress;
+    sandTop.setAttribute('y', 8 + (60 - topH));
+    sandTop.setAttribute('height', topH);
+    sandBottom.setAttribute('y', 150 - botH - 8);
+    sandBottom.setAttribute('height', botH);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // fade-up reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
+
+  // mobile menu (simple toggle placeholder)
+  document.querySelector('.menu-toggle').addEventListener('click', ()=>{
+    const nav = document.querySelector('nav ul');
+    const visible = nav.style.display === 'flex';
+    nav.style.cssText = visible ? '' : 'display:flex;flex-direction:column;position:fixed;top:64px;right:24px;background:var(--teal-deep);padding:24px 32px;gap:18px;border-radius:4px;box-shadow:0 8px 24px rgba(0,0,0,0.2);';
+  });
+
+  /* ---------- Shopping bag ---------- */
+  const CART_KEY = 'timeless-cart';
+  let cart = [];
+  try { cart = JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e){ cart = []; }
+
+  const bagBtn         = document.getElementById('bag-btn');
+  const bagCount       = document.getElementById('bag-count');
+  const cartOverlay    = document.getElementById('cart-overlay');
+  const cartDrawer     = document.getElementById('cart-drawer');
+  const cartClose      = document.getElementById('cart-close');
+  const cartItemsEl    = document.getElementById('cart-items');
+  const cartFooter     = document.getElementById('cart-footer');
+  const cartSubtotalEl = document.getElementById('cart-subtotal');
+  const cartCountLabel = document.getElementById('cart-count-label');
+
+  const saveCart = () => { try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch(e){} };
+  const money    = (n) => '$' + (Math.round(n * 100) / 100).toFixed(2).replace(/\.00$/, '');
+  const totalQty = () => cart.reduce((s, i) => s + i.qty, 0);
+
+  function openCart(){
+    cartOverlay.classList.add('open');
+    cartDrawer.classList.add('open');
+    cartDrawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCart(){
+    cartOverlay.classList.remove('open');
+    cartDrawer.classList.remove('open');
+    cartDrawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function addToCart(item){
+    const existing = cart.find(i => i.id === item.id);
+    if (existing) existing.qty += 1;
+    else cart.push({ ...item, qty: 1 });
+    saveCart(); renderCart(); openCart();
+  }
+  function changeQty(id, delta){
+    const it = cart.find(i => i.id === id);
+    if (!it) return;
+    it.qty += delta;
+    if (it.qty <= 0) cart = cart.filter(i => i.id !== id);
+    saveCart(); renderCart();
+  }
+  function removeItem(id){
+    cart = cart.filter(i => i.id !== id);
+    saveCart(); renderCart();
+  }
+
+  function renderCart(){
+    const qty = totalQty();
+    bagCount.textContent = qty;
+    bagCount.classList.toggle('show', qty > 0);
+    cartCountLabel.textContent = qty > 0 ? qty + (qty === 1 ? ' item' : ' items') : '';
+
+    if (cart.length === 0){
+      cartItemsEl.innerHTML =
+        '<div class="cart-empty"><svg><use href="#ic-bag"/></svg>' +
+        '<p>Your bag is empty.<br>Time to find something timeless.</p></div>';
+      cartFooter.hidden = true;
+      return;
+    }
+    cartFooter.hidden = false;
+    let subtotal = 0;
+    cartItemsEl.innerHTML = cart.map(it => {
+      subtotal += it.price * it.qty;
+      return `<div class="cart-item">
+        <div class="cart-item-thumb"><svg><use href="${it.icon}"/></svg></div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${it.name}</div>
+          <div class="cart-item-price">${money(it.price)}</div>
+          <div class="cart-item-controls">
+            <div class="qty">
+              <button data-act="dec" data-id="${it.id}" aria-label="Decrease quantity">&minus;</button>
+              <span>${it.qty}</span>
+              <button data-act="inc" data-id="${it.id}" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="cart-item-remove" data-act="remove" data-id="${it.id}">Remove</button>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+    cartSubtotalEl.textContent = money(subtotal);
+  }
+
+  // item controls (event delegation)
+  cartItemsEl.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-act]');
+    if (!btn) return;
+    const id = btn.getAttribute('data-id');
+    const act = btn.getAttribute('data-act');
+    if (act === 'inc') changeQty(id, 1);
+    else if (act === 'dec') changeQty(id, -1);
+    else if (act === 'remove') removeItem(id);
+  });
+
+  // add-to-bag buttons — read product details from the card
+  document.querySelectorAll('.add-bag').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      const card = el.closest('.product-card');
+      const name = card.querySelector('.product-name').textContent.trim();
+      const price = parseFloat(card.querySelector('.product-price').textContent.replace(/[^0-9.]/g, '')) || 0;
+      const iconEl = card.querySelector('.product-thumb use');
+      const icon = iconEl ? iconEl.getAttribute('href') : '#ic-bag';
+      const id = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      addToCart({ id, name, price, icon });
+    });
+  });
+
+  bagBtn.addEventListener('click', openCart);
+  cartClose.addEventListener('click', closeCart);
+  cartOverlay.addEventListener('click', closeCart);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCart(); });
+
+  document.getElementById('cart-checkout').addEventListener('click', () => {
+    alert('Checkout is a demo — this is where payment would go.\n\nTotal: ' + cartSubtotalEl.textContent);
+  });
+
+  renderCart();
+</script>
+
+</body>
+</html>
